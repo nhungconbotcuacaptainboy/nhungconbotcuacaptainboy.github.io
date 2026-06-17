@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="vi" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CAPTAIN BOY | NHỮNG CON BOT CỦA CAPTAIN BOY</title><meta name="author" content="Team Bot"><meta name="copyright" content="Team Bot"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="CAPTAIN BOY">
+<meta property="og:url" content="https://nhungconbotcuacaptainboy.github.io/CAPTAIN-BOY/index.html">
+<meta property="og:site_name" content="NHỮNG CON BOT CỦA CAPTAIN BOY">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:image" content="https://nhungconbotcuacaptainboy.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-06-16T19:18:37.000Z">
+<meta property="article:modified_time" content="2026-06-17T02:18:37.574Z">
+<meta property="article:author" content="Team Bot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nhungconbotcuacaptainboy.github.io/img/butterfly-icon.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://nhungconbotcuacaptainboy.github.io/CAPTAIN-BOY/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!undefined && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CAPTAIN BOY',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script>[object Object]<meta name="generator" content="Hexo 8.1.2"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/url(https:/www.didongmy.com/vnt_upload/news/03_2024/top-hinh-nen-thien-ha-cho-may-tinh-Didongmy.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-star"></i><span> CAPTAIN BOY</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/CAPTAIN-BOY/tieu-su-2/"><i class="fa-fw fas fa-id-card"></i><span> TIỂU SỬ</span></a></li><li><a class="site-page child" href="/CAPTAIN-BOY/thanh-tich/"><i class="fa-fw fas fa-trophy"></i><span> THÀNH TÍCH</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/social-chien-tich/index.html"><i class="fa-fw fas fa-award"></i><span> SOCIAL CHIẾN TÍCH</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-video"></i><span> STREAM</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/stream-youtube/"><i class="fa-fw fab fa-youtube"></i><span> YOUTUBE</span></a></li><li><a class="site-page child" href="/stream-spotify-free/"><i class="fa-fw fab fa-spotify"></i><span> SPOTIFY</span></a></li><li><a class="site-page child" href="/bang-xep-hang-viberate/"><i class="fa-fw fas fa-chart-line"></i><span> BXH VIBERATE</span></a></li><li><a class="site-page child" href="/billboard-vietnam-hot-100/"><i class="fa-fw fas fa-music"></i><span> BXH BILLBOARD VN</span></a></li><li><a class="site-page child" href="/spotify-daily-top-songs-vietnam/"><i class="fa-fw fab fa-spotify"></i><span> BXH SPOTIFY DAILY</span></a></li><li><a class="site-page child" href="/bxh-music-awards-lsx/"><i class="fa-fw fas fa-medal"></i><span> BXH MUSIC LSX</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-share-alt"></i><span> SOCIAL</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/dinh-nghia-tam-quan-trong-cua-social/"><i class="fa-fw fas fa-book"></i><span> ĐỊNH NGHĨA</span></a></li><li><a class="site-page child" href="/thuat-toan-cua-cac-nen-tang/"><i class="fa-fw fas fa-microchip"></i><span> THUẬT TOÁN</span></a></li><li><a class="site-page child" href="/buzzmetrics/"><i class="fa-fw fas fa-chart-bar"></i><span> BXH BUZZMETRICS</span></a></li><li><a class="site-page child" href="/you-net/"><i class="fa-fw fas fa-chart-pie"></i><span> BXH YOUNET MEDIA</span></a></li><li><a class="site-page child" href="/bang-xep-hang-socialite/"><i class="fa-fw fas fa-users"></i><span> BXH SOCIALITE</span></a></li><li><a class="site-page child" href="/kompa/"><i class="fa-fw fas fa-robot"></i><span> BXH KOMPA</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-address-card"></i><span> ABOUT ME</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/gioi-thieu/"><i class="fa-fw fas fa-info-circle"></i><span> GIỚI THIỆU</span></a></li><li><a class="site-page child" href="/cam-nang-cuu-co-canh/"><i class="fa-fw fas fa-heart"></i><span> NHỮNG DÒNG TÂM SỰ</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">NHỮNG CON BOT CỦA CAPTAIN BOY</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-star"></i><span> CAPTAIN BOY</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/CAPTAIN-BOY/tieu-su-2/"><i class="fa-fw fas fa-id-card"></i><span> TIỂU SỬ</span></a></li><li><a class="site-page child" href="/CAPTAIN-BOY/thanh-tich/"><i class="fa-fw fas fa-trophy"></i><span> THÀNH TÍCH</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/social-chien-tich/index.html"><i class="fa-fw fas fa-award"></i><span> SOCIAL CHIẾN TÍCH</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-video"></i><span> STREAM</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/stream-youtube/"><i class="fa-fw fab fa-youtube"></i><span> YOUTUBE</span></a></li><li><a class="site-page child" href="/stream-spotify-free/"><i class="fa-fw fab fa-spotify"></i><span> SPOTIFY</span></a></li><li><a class="site-page child" href="/bang-xep-hang-viberate/"><i class="fa-fw fas fa-chart-line"></i><span> BXH VIBERATE</span></a></li><li><a class="site-page child" href="/billboard-vietnam-hot-100/"><i class="fa-fw fas fa-music"></i><span> BXH BILLBOARD VN</span></a></li><li><a class="site-page child" href="/spotify-daily-top-songs-vietnam/"><i class="fa-fw fab fa-spotify"></i><span> BXH SPOTIFY DAILY</span></a></li><li><a class="site-page child" href="/bxh-music-awards-lsx/"><i class="fa-fw fas fa-medal"></i><span> BXH MUSIC LSX</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-share-alt"></i><span> SOCIAL</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/dinh-nghia-tam-quan-trong-cua-social/"><i class="fa-fw fas fa-book"></i><span> ĐỊNH NGHĨA</span></a></li><li><a class="site-page child" href="/thuat-toan-cua-cac-nen-tang/"><i class="fa-fw fas fa-microchip"></i><span> THUẬT TOÁN</span></a></li><li><a class="site-page child" href="/buzzmetrics/"><i class="fa-fw fas fa-chart-bar"></i><span> BXH BUZZMETRICS</span></a></li><li><a class="site-page child" href="/you-net/"><i class="fa-fw fas fa-chart-pie"></i><span> BXH YOUNET MEDIA</span></a></li><li><a class="site-page child" href="/bang-xep-hang-socialite/"><i class="fa-fw fas fa-users"></i><span> BXH SOCIALITE</span></a></li><li><a class="site-page child" href="/kompa/"><i class="fa-fw fas fa-robot"></i><span> BXH KOMPA</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-address-card"></i><span> ABOUT ME</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/gioi-thieu/"><i class="fa-fw fas fa-info-circle"></i><span> GIỚI THIỆU</span></a></li><li><a class="site-page child" href="/cam-nang-cuu-co-canh/"><i class="fa-fw fas fa-heart"></i><span> NHỮNG DÒNG TÂM SỰ</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">CAPTAIN BOY</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Team Bot</div><div class="author-info-description">Những Con Bot Của CAPTAIN BOY</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Chào mừng CỪU CÓ CÁNH bay đến vũ trụ của CAPTAIN BOY! 🌌🚀</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/01/cuu-hoi-bot-dap/" title="CỪU HỎI - BOT ĐÁP">CỪU HỎI - BOT ĐÁP</a><time datetime="2026-03-01T08:38:32.000Z" title="Created 2026-03-01 15:38:32">2026-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/28/cac-hoat-dong-cua-team-bot/" title="CÁC HOẠT ĐỘNG CỦA TEAM BOT 2025">CÁC HOẠT ĐỘNG CỦA TEAM BOT 2025</a><time datetime="2026-02-28T22:49:42.000Z" title="Created 2026-03-01 05:49:42">2026-03-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/uncategorized/"><span class="card-category-list-name">uncategorized</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/03/">
+            <span class="card-archive-list-date">
+              tháng 3 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-06-17T07:37:36.368Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Team Bot</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script>
+  function addVideoBackground() {
+    var v_url = "/assets/bg-video.mp4";
+    var v_html = '<video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;"><source src="' + v_url + '" type="video/mp4"></video>';
+    var header = document.getElementById("page-header");
+    if (header) {
+      header.insertAdjacentHTML("afterbegin", v_html);
+      header.style.background = "transparent";
+    }
+  }
+  addVideoBackground();
+  document.addEventListener("pjax:complete", addVideoBackground);
+</script>
+<script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
