@@ -6,8 +6,8 @@
 <meta property="og:description" content="CAPTAIN BOY - SOCIAL CHIẾN TÍCH                             body {             margin: 0; padding: 0; color: white;             font-family: &#39;Be Vietnam Pro&#39;, sans-serif;">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:image" content="https://nhungconbotcuacaptainboy.github.io/assets/logo.jpg">
-<meta property="article:published_time" content="2026-06-17T03:34:11.189Z">
-<meta property="article:modified_time" content="2026-06-17T03:34:11.189Z">
+<meta property="article:published_time" content="2026-06-18T04:43:28.656Z">
+<meta property="article:modified_time" content="2026-06-18T04:43:28.656Z">
 <meta property="article:author" content="Team Bot">
 <meta property="article:tag" content="CAPTAIN BOY, Team Bot, Cừu Có Cánh, Rapper CAPTAIN BOY, nghệ sĩ CAPTAIN BOY">
 <meta name="twitter:card" content="summary">
@@ -186,13 +186,15 @@
             overflow-x: hidden; position: relative;
         }
         @keyframes galaxyMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .galaxy-card { background: rgba(16, 25, 45, 0.75); border: 1px solid rgba(234, 179, 8, 0.3); border-radius: 24px; backdrop-filter: blur(15px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); position: relative; z-index: 10; }
+        .galaxy-card { background: rgba(16, 25, 45, 0.75); border: 1px solid rgba(234, 179, 8, 0.3); border-radius: 24px; backdrop-filter: blur(15px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); position: relative; z-index: 10; transition: 0.3s; }
         #music-control { position: fixed; bottom: 20px; right: 20px; z-index: 100; width: 50px; height: 50px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); border: 2px solid #eab308; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; }
         .music-playing { animation: pulse-yellow 2s infinite; }
         input { background: rgba(255, 255, 255, 0.07) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; border-radius: 12px; padding: 14px; color: white; width: 100%; margin-bottom: 12px; outline: none; }
         input:focus { border-color: #eab308 !important; }
         .glow-text { text-shadow: 0 0 20px rgba(234, 179, 8, 0.6); }
         @keyframes pulse-yellow { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 20px #eab308; } 100% { transform: scale(1); } }
+        .btn-filter { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-filter:hover { transform: translateY(-2px); filter: brightness(1.2); }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -212,17 +214,18 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 <div class="galaxy-card p-6">
-                    <p class="text-[10px] text-gray-400 uppercase mb-4 font-bold">Số bài tương tác</p>
+                    <p class="text-[10px] text-gray-400 uppercase mb-4 font-bold">Nền tảng hoạt động</p>
                     <canvas id="chartPlatforms"></canvas>
                 </div>
                 <div class="galaxy-card p-6">
-                    <p class="text-[10px] text-gray-400 uppercase mb-4 font-bold">Tiến độ CMT</p>
+                    <p class="text-[10px] text-gray-400 uppercase mb-4 font-bold">Tiến độ CMT (KPI)</p>
                     <canvas id="chartKPI"></canvas>
                 </div>
             </div>
         </header>
 
         <div class="max-w-2xl mx-auto">
+            <!-- PHẦN NỘP CHIẾN TÍCH -->
             <div class="galaxy-card p-8 mb-12 border-t-4 border-yellow-500 text-center">
                 <h2 class="text-xl font-black mb-6 uppercase tracking-widest text-yellow-400">🚀 NỘP CHIẾN TÍCH</h2>
                 <div id="report-box">
@@ -234,13 +237,14 @@
                 <div id="success-msg" class="hidden text-yellow-400 font-bold py-4">✨ ĐÃ GHI NHẬN VÀO VŨ TRỤ! ✨</div>
             </div>
 
-            <div class="flex justify-center gap-2 mb-8 overflow-x-auto pb-2 px-2">
-                <button onclick="filter('All')" class="px-5 py-2 rounded-full bg-white/10 border border-white/20 text-xs font-bold">Tất cả</button>
-                <button onclick="filter('Facebook')" class="px-5 py-2 rounded-full bg-blue-600 text-xs font-bold">Facebook</button>
-                <button onclick="filter('TikTok')" class="px-5 py-2 rounded-full bg-pink-600 text-xs font-bold">TikTok</button>
-                <button onclick="filter('Threads')" class="px-5 py-2 rounded-full bg-black border border-gray-600 text-xs font-bold">Threads</button>
+            <!-- BỘ LỌC THEO TRẠNG THÁI (MỚI CẬP NHẬT) -->
+            <div class="flex justify-center gap-3 mb-8 overflow-x-auto pb-2 px-2">
+                <button onclick="filter('All')" class="btn-filter px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider">Tất cả</button>
+                <button onclick="filter('Đang chạy')" class="btn-filter px-6 py-2.5 rounded-full bg-yellow-500 text-black text-xs font-black shadow-lg shadow-yellow-500/30 uppercase tracking-wider">🔥 Đang chạy</button>
+                <button onclick="filter('Hoàn thành')" class="btn-filter px-6 py-2.5 rounded-full bg-blue-900 border border-blue-700 text-white text-xs font-bold uppercase tracking-wider">✅ Hoàn thành</button>
             </div>
 
+            <!-- DANH SÁCH BÀI VIẾT -->
             <div id="post-list" class="space-y-8"></div>
         </div>
         <footer class="text-center py-20 mt-10 border-t border-white/10 font-bold opacity-50 text-[10px]">@NHUNGCONBOTCUACAPTAINBOY</footer>
@@ -251,9 +255,8 @@
         const musicBtn = document.getElementById('music-control');
         const musicIcon = document.getElementById('music-icon');
         function toggleMusic() { if (music.paused) { music.play(); musicIcon.innerText = "🔊"; musicBtn.classList.add('music-playing'); } else { music.pause(); musicIcon.innerText = "🔇"; musicBtn.classList.remove('music-playing'); } }
-        
-        // --- THAY URL CỦA BẠN VÀO ĐÂY ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7o80TxIkZPgsTW5nKFuVOE1h0WtbsGBfMrW8tmbIX_fIrIbF9B6W1QhOWtnn39bA1/exec";
+    
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIvrpOfMGO5ryIiQ0uX6c-CLT0CA_2p63ajv6BfjU0_XvkY8o4niOiXKQ7b4UAMPI/exec";
         
         let allPosts = [];
         let chart1, chart2;
@@ -287,20 +290,31 @@
             list.innerHTML = data.map(item => {
                 const hasLink = item.content && item.content.toString().startsWith("http");
                 const templateBtn = hasLink 
-                    ? `<a href="${item.content}" target="_blank" class="bg-white/10 text-white font-bold py-4 rounded-xl text-center text-xs uppercase border border-white/20">VĂN MẪU</a>`
+                    ? `<a href="${item.content}" target="_blank" class="bg-white/10 text-white font-bold py-4 rounded-xl text-center text-xs uppercase border border-white/20 hover:bg-white/20 transition-all">VĂN MẪU</a>`
                     : `<div class="bg-gray-800/40 text-gray-500 font-bold py-4 rounded-xl text-center text-[10px] uppercase border border-gray-700 opacity-50">KHÔNG CÓ VĂN MẪU</div>`;
-                return `<div class="galaxy-card p-6 border-l-4 ${item.status === 'Đang chạy' ? 'border-l-yellow-400' : 'border-l-blue-900'}">
-                    <div class="flex justify-between items-center mb-4 uppercase font-bold text-[10px]"><span class="text-blue-400">${item.platform}</span><span class="${item.status === 'Đang chạy' ? 'text-yellow-400 animate-pulse' : 'text-gray-500'} italic">${item.status}</span></div>
+                
+                const isRunning = item.status.trim() === 'Đang chạy';
+
+                return `<div class="galaxy-card p-6 border-l-4 ${isRunning ? 'border-l-yellow-400' : 'border-l-blue-900'}">
+                    <div class="flex justify-between items-center mb-4 uppercase font-bold text-[10px]">
+                        <span class="text-blue-400">${item.platform}</span>
+                        <span class="${isRunning ? 'text-yellow-400 animate-pulse' : 'text-gray-500'} italic">${item.status}</span>
+                    </div>
                     <h3 class="text-2xl font-black mb-2 text-white italic uppercase">${item.goal}</h3>
                     <p class="text-gray-400 text-[10px] mb-6 uppercase tracking-widest font-bold">Key: ${item.keywords}</p>
-                    <div class="grid grid-cols-2 gap-3"><a href="${item.link}" target="_blank" class="bg-yellow-500 text-black font-black py-4 rounded-xl text-center text-xs uppercase">CHIẾN NGAY</a>${templateBtn}</div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="${item.link}" target="_blank" class="bg-yellow-500 text-black font-black py-4 rounded-xl text-center text-xs uppercase hover:scale-105 transition-all">CHIẾN NGAY</a>
+                        ${templateBtn}
+                    </div>
                 </div>`;
             }).join('');
         }
         
-        function filter(p) { render(p === 'All' ? allPosts : allPosts.filter(x => x.platform === p)); }
+        // --- HÀM LỌC ĐÃ SỬA: LỌC THEO TRẠNG THÁI ---
+        function filter(p) { 
+            render(p === 'All' ? allPosts : allPosts.filter(x => x.status.trim() === p)); 
+        }
 
-        // --- HÀM GỬI DỮ LIỆU ĐÃ SỬA ---
         async function sendReport() {
             const name = document.getElementById('name').value;
             const account = document.getElementById('account').value;
@@ -316,7 +330,6 @@
             btn.disabled = true;
 
             try {
-                // Sử dụng mode 'no-cors' để tránh lỗi CORS từ phía trình duyệt
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -324,11 +337,9 @@
                     body: JSON.stringify({ name, account, quantity })
                 });
 
-                // Hiển thị thành công
                 document.getElementById('report-box').classList.add('hidden');
                 document.getElementById('success-msg').classList.remove('hidden');
 
-                // Reset form sau 3 giây
                 setTimeout(() => {
                     document.getElementById('report-box').classList.remove('hidden');
                     document.getElementById('success-msg').classList.add('hidden');
@@ -349,8 +360,7 @@
         init();
     </script>
 </body>
-</html>
-</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/assets/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Team Bot</div><div class="author-info-description">Những Con Bot Của CAPTAIN BOY</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://www.facebook.com/profile.php?id=61586563666241" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a><a class="social-icon" href="https://www.instagram.com/nhungconbotcuacaptainboy/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://www.threads.com/@nhungconbotcuacaptainboy?xmt=AQGz77ru28QJkrrCi9qoVjR7w-lU7o-zzEJXS6oAH4HcsWE" target="_blank" title="Threads"><i class="fab fa-threads"></i></a><a class="social-icon" href="mailto:ncbccaptainboy@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Chào mừng CỪU CÓ CÁNH bay đến vũ trụ của CAPTAIN BOY! 🌌🚀</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/01/cuu-hoi-bot-dap/" title="CỪU HỎI - BOT ĐÁP">CỪU HỎI - BOT ĐÁP</a><time datetime="2026-03-01T08:38:32.000Z" title="Created 2026-03-01 15:38:32">2026-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/28/cac-hoat-dong-cua-team-bot/" title="CÁC HOẠT ĐỘNG CỦA TEAM BOT 2025">CÁC HOẠT ĐỘNG CỦA TEAM BOT 2025</a><time datetime="2026-02-28T22:49:42.000Z" title="Created 2026-03-01 05:49:42">2026-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/28/loi-nhan/" title="LỜI NHẮN CỦA CỪU CÓ CÁNH ĐẾN CAPTAIN BOY TẠI TINH HÀ SAY HI">LỜI NHẮN CỦA CỪU CÓ CÁNH ĐẾN CAPTAIN BOY TẠI TINH HÀ SAY HI</a><time datetime="2026-02-28T22:49:42.000Z" title="Created 2026-03-01 05:49:42">2026-03-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+</html></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/assets/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Team Bot</div><div class="author-info-description">Những Con Bot Của CAPTAIN BOY</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://www.facebook.com/profile.php?id=61586563666241" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a><a class="social-icon" href="https://www.instagram.com/nhungconbotcuacaptainboy/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://www.threads.com/@nhungconbotcuacaptainboy?xmt=AQGz77ru28QJkrrCi9qoVjR7w-lU7o-zzEJXS6oAH4HcsWE" target="_blank" title="Threads"><i class="fab fa-threads"></i></a><a class="social-icon" href="mailto:ncbccaptainboy@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">Chào mừng CỪU CÓ CÁNH bay đến vũ trụ của CAPTAIN BOY! 🌌🚀</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/01/cuu-hoi-bot-dap/" title="CỪU HỎI - BOT ĐÁP">CỪU HỎI - BOT ĐÁP</a><time datetime="2026-03-01T08:38:32.000Z" title="Created 2026-03-01 15:38:32">2026-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/28/cac-hoat-dong-cua-team-bot/" title="CÁC HOẠT ĐỘNG CỦA TEAM BOT 2025">CÁC HOẠT ĐỘNG CỦA TEAM BOT 2025</a><time datetime="2026-02-28T22:49:42.000Z" title="Created 2026-03-01 05:49:42">2026-03-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/28/loi-nhan/" title="LỜI NHẮN CỦA CỪU CÓ CÁNH ĐẾN CAPTAIN BOY TẠI TINH HÀ SAY HI">LỜI NHẮN CỦA CỪU CÓ CÁNH ĐẾN CAPTAIN BOY TẠI TINH HÀ SAY HI</a><time datetime="2026-02-28T22:49:42.000Z" title="Created 2026-03-01 05:49:42">2026-03-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>Categories</span>
             
@@ -376,7 +386,7 @@
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">3</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-06-18T02:47:32.015Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Team Bot</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">3</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-06-18T04:44:16.291Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Team Bot</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script>
   function insertVideo() {
     var header = document.getElementById("page-header");
     if (header && !document.getElementById("bgVideo")) {
