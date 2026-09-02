@@ -319,13 +319,15 @@
                     myAva = me.avatar || myAva;
                     document.getElementById('user-ava-header').src = myAva;
                     document.getElementById('player-pawn').src = myAva;
-                    if(me.isBroken) {
-                        document.getElementById('map-container').classList.add('broken-mode');
-                        document.getElementById('alert-broken').classList.remove('hidden');
-                    } else {
-                        document.getElementById('map-container').classList.remove('broken-mode');
-                        document.getElementById('alert-broken').classList.add('hidden');
-                        movePawn(me.streak); checkMilestones(me.streak);
+  // KIỂM TRA ĐỨT CHUỖI (Nếu isBroken là true từ server)
+            if(me.isBroken) {
+                document.getElementById('map-container').classList.add('broken-mode');
+                document.getElementById('action-box').classList.add('broken-mode');
+                document.getElementById('alert-broken').classList.remove('hidden'); // HIỆN NÚT KHÔI PHỤC
+            } else {
+                document.getElementById('map-container').classList.remove('broken-mode');
+                document.getElementById('action-box').classList.remove('broken-mode');
+                document.getElementById('alert-broken').classList.add('hidden'); // ẨN NÚT KHÔI PHỤC
                     }
                 }
             } catch(e) { console.error("Lỗi đồng bộ!"); }
