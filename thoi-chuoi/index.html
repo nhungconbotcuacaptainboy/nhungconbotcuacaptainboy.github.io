@@ -14,178 +14,51 @@
         .comic-border { border: 5px solid #000; box-shadow: 8px 8px 0px #000; border-radius: 30px; background: white; }
         .btn-comic { background: #ef4444; color: white; border: 3px solid #000; font-family: 'Bangers'; padding: 12px 20px; box-shadow: 0 5px 0 #000; border-radius: 20px; transition: 0.2s; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-comic:active { transform: translateY(4px); box-shadow: 0 1px 0 #000; }
-        
-        .broken-mode { filter: grayscale(1); pointer-events: none; opacity: 0.6; }
+        .broken-mode { filter: grayscale(1); pointer-events: none; opacity: 0.6; cursor: not-allowed; }
         .ava-box { border: 4px solid transparent; border-radius: 20px; cursor: pointer; transition: 0.3s; padding: 5px; background: #f8fafc; text-align: center; }
         .ava-box.selected { border-color: #3b82f6; background: #dbeafe; transform: scale(1.05); }
-
+        .tab-btn { padding: 10px; font-family: 'Bangers'; font-size: 1.2rem; cursor: pointer; border-bottom: 4px solid transparent; transition: 0.3s; }
+        .tab-btn.active { border-color: #ef4444; color: #ef4444; }
         #game-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(55px, 1fr)); gap: 10px; padding: 20px; position: relative; }
         .map-tile { aspect-ratio: 1; border: 2px solid #000; border-radius: 12px; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; font-family: 'Bangers'; font-size: 1.2rem; }
         .map-tile.active { background: #fef08a; border-color: #f59e0b; color: #b45309; }
         .map-tile.milestone { background: #fee2e2; border-color: #ef4444; color: #ef4444; }
-        
-        #player-pawn { 
-            position: absolute; width: 55px; height: 55px; z-index: 100; 
-            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 3px solid #000; border-radius: 50%; background: white; object-fit: cover;
-        }
-
-        /* CHUỖI NHÓM: Có thể kéo thả */
+        #player-pawn { position: absolute; width: 55px; height: 55px; z-index: 100; transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); border: 3px solid #000; border-radius: 50%; background: white; object-fit: cover; }
         .group-status { position: fixed; bottom: 20px; left: 20px; z-index: 1000; width: 220px; cursor: move; user-select: none; touch-action: none; }
-
-        /* ĐỒNG CỪU ƯU TÚ: Nhỏ gọn 3 cột */
-/* Khung chứa Đồng Cừu */
-.farm-bg { 
-    background-image: url('nenuutu.jpg'); 
-    background-size: cover; 
-    background-position: center;
-    border: 6px solid #4d2c19; 
-    height: 500px; 
-    border-radius: 25px; 
-    position: relative; 
-    display: flex; 
-    flex-direction: column; 
-    overflow: hidden; 
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
-}
-
-/* Lưới danh sách cừu */
-#farm-grid { 
-    overflow-y: auto; 
-    padding: 12px; 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); /* 3 cột ngang */
-    gap: 10px; 
-    align-content: start; /* QUAN TRỌNG: Đẩy các thẻ lên trên, không cho kéo giãn chiều cao */
-    flex-grow: 1;
-}
-
-/* Thẻ cừu nhỏ gọn */
-.sheep-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #000;
-    border-radius: 15px;
-    padding: 8px 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 3px 3px 0px #000;
-    height: fit-content; /* Chỉ cao bằng nội dung bên trong */
-    transition: transform 0.2s;
-}
-
-.sheep-card:hover {
-    transform: translateY(-2px);
-}
-
-.sheep-card img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #000;
-    object-fit: cover;
-    background: #fff;
-}
-
-.sheep-card p.name {
-    font-size: 9px;
-    font-weight: 900;
-    margin-top: 4px;
-    text-transform: uppercase;
-    color: #1e40af;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.sheep-card p.streak {
-    font-size: 10px;
-    color: #ef4444;
-    font-weight: 800;
-    margin-top: 2px;
-}
-
+        .farm-bg { background-image: url('nenuutu.jpg'); background-size: cover; background-position: center; border: 6px solid #4d2c19; height: 500px; border-radius: 25px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: inset 0 0 50px rgba(0,0,0,0.3); }
+        #farm-grid { overflow-y: auto; padding: 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-content: start; flex-grow: 1; }
+        .sheep-card { background: rgba(255, 255, 255, 0.9); border: 2px solid #000; border-radius: 15px; padding: 8px 4px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 3px 3px 0px #000; height: fit-content; transition: transform 0.2s; }
+        .sheep-card img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #000; object-fit: cover; background: #fff; }
+        .sheep-card p.name { font-size: 9px; font-weight: 900; margin-top: 4px; text-transform: uppercase; color: #1e40af; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sheep-card p.streak { font-size: 10px; color: #ef4444; font-weight: 800; }
         .badge-item { width: 35px; height: 35px; border-radius: 50%; border: 2px dashed #999; display: flex; align-items: center; justify-content: center; filter: grayscale(1); font-size: 16px; background: #f1f5f9; }
         .badge-item.unlocked { border: 2px solid #000; background: #fff; filter: grayscale(0); box-shadow: 2px 2px 0 #000; transform: scale(1.1); }
-        
-        #congrats-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
-        .congrats-content { background: white; border: 6px solid #000; border-radius: 40px; padding: 40px; text-align: center; max-width: 400px; width: 100%; transform: scale(0.5); opacity: 0; }
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 3000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .modal-content { background: white; border: 6px solid #000; border-radius: 40px; padding: 30px; text-align: center; max-width: 450px; width: 100%; position: relative; }
+        .qr-frame { border: 3px solid #000; border-radius: 15px; background: white; padding: 8px; text-align: center; box-shadow: 4px 4px 0 #000; }
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
 <body>
-    <!-- THANH MENU ĐIỀU HƯỚNG TÙY CHỈNH -->
-<nav class="max-w-7xl mx-auto p-4 mt-2">
-    <div class="comic-border bg-white flex flex-wrap items-center justify-between px-6 py-3 gap-4">
-        <!-- Logo/Tên Web -->
-        <a href="/" class="text-xl font-black italic text-blue-700" style="font-family: 'Bangers'">
-            <i class="fas fa-rocket mr-2"></i>NHỮNG CON BOT CỦA CAPTAIN BOY
-        </a>
-
-        <!-- Các mục Menu -->
-        <div class="flex flex-wrap gap-4 text-[11px] font-black uppercase italic">
-            <a href="/" class="hover:text-blue-500 transition"><i class="fas fa-home mr-1"></i> TRANG CHỦ</a>
-            <a href="/CAPTAIN-BOY/tieu-su-2/" class="hover:text-blue-500 transition"><i class="fas fa-star mr-1"></i> CAPTAIN BOY</a>
-            
-            <!-- MỤC GIỮ CHUỖI CÙNG NHAU (TRANG HIỆN TẠI) -->
-            <a href="/thoi-chuoi" class="text-orange-600 border-b-2 border-orange-600"><i class="fas fa-link mr-1"></i> THỔI CHUỖI CÙNG NHAU</a>
-            
-            <a href="/social-chien-tich/index.html" class="hover:text-blue-500 transition"><i class="fas fa-award mr-1"></i> CHIẾN TÍCH</a>
-            <a href="/stream-youtube/" class="hover:text-blue-500 transition"><i class="fas fa-video mr-1"></i> STREAM</a>
-            <a href="/dinh-nghia-tam-quan-trong-cua-social/" class="hover:text-blue-500 transition"><i class="fas fa-share-alt mr-1"></i> SOCIAL</a>
-            <a href="/gioi-thieu/" class="hover:text-blue-500 transition"><i class="fas fa-address-card mr-1"></i> ABOUT ME</a>
-        </div>
-    </div>
-</nav>
-
     <audio id="sfx-win" src="nhacnenmodau.mp3"></audio>
     <audio id="bgm" loop src="nhacnenmodau.mp3"></audio>
 
-    <!-- WIDGET CHUỖI NHÓM -->
-    <div id="group-widget" class="group-status hidden">
-        <div class="comic-border p-4 bg-orange-400 border-black shadow-[4px_4px_0px_#000]">
-            <p class="text-[10px] font-black uppercase text-white mb-1 drop-shadow-md text-center">Chuỗi Nhóm Hệ Cừu 🔥</p>
-            <div id="group-streak-val" class="text-4xl font-black text-white italic text-center mb-2" style="font-family: 'Bangers'">0 DAYS</div>
-            <div class="bg-white/30 p-2 rounded-xl border-2 border-black text-center">
-                <p class="text-[8px] font-bold text-black mb-1 italic leading-tight">Đủ 30 cừu báo danh để giữ chuỗi nhóm!</p>
-                <div class="w-full h-3 bg-gray-200 border border-black rounded-full overflow-hidden">
-                    <div id="group-bar" class="h-full bg-green-500 transition-all duration-700" style="width: 0%"></div>
-                </div>
-                <p id="group-count-val" class="text-[10px] font-black text-black mt-1">0/30 Cừu</p>
+    <nav class="max-w-7xl mx-auto p-4 mt-2">
+        <div class="comic-border bg-white flex flex-wrap items-center justify-between px-6 py-3 gap-4">
+            <a href="/" class="text-xl font-black italic text-blue-700" style="font-family: 'Bangers'"><i class="fas fa-rocket mr-2"></i>NHỮNG CON BOT CỦA CAPTAIN BOY</a>
+            <div class="flex flex-wrap gap-4 text-[11px] font-black uppercase italic">
+                <a href="/" class="hover:text-blue-500 transition"><i class="fas fa-home"></i> TRANG CHỦ</a>
+                <a href="/CAPTAIN-BOY/tieu-su-2/" class="hover:text-blue-500 transition"><i class="fas fa-star"></i> CAPTAIN BOY</a>
+                <a href="/thoi-chuoi" class="text-orange-600 border-b-2 border-orange-600"><i class="fas fa-link"></i> THỔI CHUỖI CÙNG NHAU</a>
+                <a href="/social-chien-tich/index.html" class="hover:text-blue-500 transition"><i class="fas fa-award"></i> CHIẾN TÍCH</a>
+                <a href="/stream-youtube/" class="hover:text-blue-500 transition"><i class="fas fa-video"></i> STREAM</a>
+                <a href="/dinh-nghia-tam-quan-trong-cua-social/" class="hover:text-blue-500 transition"><i class="fas fa-share-alt"></i> SOCIAL</a>
+                <a href="/gioi-thieu/" class="hover:text-blue-500 transition"><i class="fas fa-address-card"></i> ABOUT ME</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- POP-UP CHÚC MỪNG -->
-    <div id="congrats-modal">
-        <div class="congrats-content">
-            <h2 class="text-5xl mb-4 text-yellow-500" style="font-family: 'Bangers'">TUYỆT VỜI!</h2>
-            <div id="congrats-badge-icon" class="text-7xl mb-4">🥉</div>
-            <p id="congrats-text" class="text-xl font-black uppercase mb-6 leading-tight"></p>
-            <button onclick="closeCongrats()" class="btn-comic w-full text-2xl">TIẾP TỤC</button>
-        </div>
-    </div>
-
-    <!-- MÀN HÌNH ĐĂNG NHẬP -->
-    <div id="login-screen" class="fixed inset-0 z-[2000] bg-sky-500 flex items-center justify-center p-4">
-        <div class="comic-border p-8 max-w-md w-full text-center space-y-6">
-            <h1 class="text-4xl text-blue-700" style="font-family: 'Bangers'">THỔI CHUỖI CÙNG NHAU</h1>
-                        <p class="font-bold italic text-sm text-gray-700">Sử dụng một tên và avatar duy nhất cho suốt hành trình!</p>
-            <div class="grid grid-cols-3 gap-3">
-                <div class="ava-box selected" onclick="pickAva(this, 'avatar1.jpg')"><img src="avatar1.jpg" class="w-full h-14 object-contain mx-auto"><p class="text-[9px] font-bold mt-1">Cừu Non</p></div>
-                <div class="ava-box" onclick="pickAva(this, 'avatar2.jpg')"><img src="avatar2.jpg" class="w-full h-14 object-contain mx-auto"><p class="text-[9px] font-bold mt-1">Cừu Cute</p></div>
-                <div class="ava-box flex flex-col items-center justify-center border-2 border-dashed border-gray-400" onclick="document.getElementById('uploadAva').click()">
-                    <div id="pre-view" class="text-xs font-bold text-gray-500 py-1"><i class="fas fa-upload text-lg"></i><br>Ảnh riêng</div>
-                    <input type="file" id="uploadAva" class="hidden" accept="image/*" onchange="handleUpload(this)">
-                </div>
-            </div>
-            <input type="text" id="nick" class="w-full border-4 border-black p-3 rounded-xl text-center font-black uppercase text-lg" placeholder="TÊN CỪU THỔI CHUỖI...">
-            <button onclick="startGame()" class="btn-comic w-full text-2xl uppercase">Bắt đầu</button>
-        </div>
-    </div>
-
-    <!-- UI CHÍNH -->
     <div id="main-ui" class="hidden max-w-7xl mx-auto p-4 space-y-6">
         <header class="flex flex-wrap justify-between items-center bg-white border-4 border-black p-4 rounded-3xl">
             <div class="flex items-center gap-4">
@@ -198,237 +71,310 @@
                     </div>
                 </div>
             </div>
-            <div class="text-right">
-                <p id="user-streak" class="text-4xl font-black text-red-500 italic" style="font-family: 'Bangers'">0 DAYS 🔥</p>
-                <p class="text-[10px] font-bold text-gray-400 uppercase italic">Chuỗi cá nhân</p>
-            </div>
+            <p id="user-streak" class="text-4xl font-black text-red-500 italic" style="font-family: 'Bangers'">0 DAYS 🔥</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-24">
             <div class="lg:col-span-8 space-y-6">
-                <div id="alert-broken" class="hidden comic-border bg-slate-700 text-white p-8 text-center space-y-4">
-                    <h2 class="text-3xl font-black" style="font-family: 'Bangers'">BẠN ĐÃ BỊ ĐÓNG BĂNG!</h2>
-                    <button onclick="doAction('restore')" class="btn-comic bg-blue-500 mx-auto">KHÔI PHỤC CHUỖI BÁO DANH NGAY 🆘</button>
-                </div>
-                <div id="map-container" class="comic-border bg-white relative overflow-hidden min-h-[350px]">
-                    <div id="game-map"></div>
-                </div>
-                <div id="action-box" class="comic-border p-6 bg-yellow-50">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-                        <div class="space-y-3">
-                             <label class="font-black text-xs">SỐ TIỀN DNT THỔI CHUỖI:</label>
-                            <input type="number" id="amt" placeholder="Ví dụ: 11.603" class="w-full border-4 border-black p-3 rounded-xl font-bold bg-white outline-none">
-
-                            <input type="file" id="bill" class="hidden" accept="image/*" onchange="updateFileName(this)">
-                            <button type="button" onclick="document.getElementById('bill').click()" id="bill-btn" class="w-full border-2 border-dashed border-black p-3 rounded-xl font-black text-xs bg-white uppercase"><span id="bill-text">TẢI BILL MINH CHỨNG</span></button>
+                <!-- KHUNG ĐÓNG BĂNG -->
+                <div id="alert-broken" class="hidden comic-border bg-slate-800 text-white p-6 text-center space-y-4">
+                    <h2 class="text-2xl font-black text-cyan-400" style="font-family: 'Bangers'">BẠN ĐÃ BỊ ĐÓNG BĂNG! ❄️</h2>
+                    <p class="text-[11px] italic">Bạn đã bị đóng băng rồi! Hãy <b>DNT Bù</b> để phá băng và nhận lại Streak bù để được báo danh hôm nay nhé.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+                        <div class="qr-frame text-black">
+                            <p class="text-[8px] font-black">QUÉT MÃ DNT BÙ (> 0 đ)</p>
+                            <img src="qrcaptain.jpg" class="w-20 h-20 mx-auto">
                         </div>
-                        <button id="btnSubmit" onclick="doAction('submit')" class="btn-comic w-full h-[55px] text-xl uppercase italic">Gửi báo danh 🔥</button>
+                        <div class="space-y-2 text-left">
+                            <input type="number" id="amt-broken" placeholder="Số tiền bù..." class="w-full p-2 rounded-lg text-black font-bold text-sm">
+                            <input type="file" id="bill-broken" class="hidden" onchange="document.getElementById('text-bill-broken').innerText='ĐÃ CHỌN BILL'">
+                            <button onclick="document.getElementById('bill-broken').click()" class="w-full bg-slate-600 border border-dashed p-2 text-[10px] rounded-lg"><span id="text-bill-broken">TẢI BILL BÙ</span></button>
+                            <button id="btnRestore" onclick="doAction('restore')" class="btn-comic w-full bg-blue-500 border-white text-sm">XÁC NHẬN BÙ & PHÁ BĂNG 🆘</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="map-container" class="comic-border bg-white relative overflow-hidden min-h-[350px]"><div id="game-map"></div></div>
+
+                <div id="action-box" class="comic-border p-6 bg-yellow-50">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                        <div class="space-y-2">
+                            <label class="font-black text-[10px] uppercase">Số tiền DNT (> 0 đ):</label>
+                            <input type="number" id="amt" placeholder="11.603" class="w-full border-4 border-black p-2 rounded-xl font-bold bg-white outline-none">
+                            <button type="button" onclick="document.getElementById('bill').click()" class="w-full border-2 border-dashed border-black p-2 rounded-xl font-black text-[10px] bg-white uppercase"><span id="bill-text">TẢI BILL MINH CHỨNG</span></button>
+                            <input type="file" id="bill" class="hidden" onchange="document.getElementById('bill-text').innerText='ĐÃ CHỌN BILL'">
+                        </div>
+                        <button id="btnSubmit" onclick="doAction('submit')" class="btn-comic w-full h-[65px] text-xl uppercase italic">Gửi báo danh 🔥</button>
+                        <div class="qr-frame">
+                            <p class="text-[8px] font-black mb-1 uppercase">Mã thổi chuỗi</p>
+                            <img src="qrcaptain.jpg" class="w-16 h-16 mx-auto">
+                            <p class="font-bold italic text-[8px] text-gray-700"> Nội dung: [ tên duy trì thổi chuỗi ] + thổi chuỗi Tinh Hà!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-         <div class="lg:col-span-4">
-    <div class="farm-bg comic-border">
-        <!-- Tiêu đề Đồng Cừu -->
-        <div class="p-3 bg-black/50 backdrop-blur-md border-b-4 border-black sticky top-0 z-10">
-            <h3 class="text-center font-black text-white text-xl uppercase italic tracking-wider drop-shadow-[2px_2px_0px_#000]" style="font-family: 'Bangers'">
-                ĐỒNG CỪU ƯU TÚ 🐑
-            </h3>
+            <div class="lg:col-span-4">
+                <div class="farm-bg comic-border">
+                    <div class="p-3 bg-black/50 border-b-4 border-black sticky top-0 z-10 text-center text-white font-black uppercase italic" style="font-family: 'Bangers'">ĐỒNG CỪU ƯU TÚ 🐑</div>
+                    <div id="farm-grid"></div>
+                </div>
+            </div>
         </div>
-        <!-- Danh sách cừu sẽ hiện ở đây -->
-        <div id="farm-grid"></div>
     </div>
-</div>
+
+    <!-- TAB ĐĂNG KÝ / ĐĂNG NHẬP -->
+    <div id="login-screen" class="fixed inset-0 z-[2000] bg-sky-500 flex items-center justify-center p-4">
+        <div class="comic-border p-8 max-w-md w-full text-center space-y-4">
+            <h1 class="text-3xl text-blue-700" style="font-family: 'Bangers'">THỔI CHUỖI CÙNG NHAU</h1>
+            <p class="font-bold italic text-sm text-gray-700">Chọn Avatar, tên và password duy nhất cho suốt hành trình!</p>
+            <div class="flex justify-around border-b-2 border-black mb-4">
+                <div id="tab-reg" class="tab-btn active" onclick="switchTab('reg')">ĐĂNG KÝ</div>
+                <div id="tab-login" class="tab-btn" onclick="switchTab('login')">ĐĂNG NHẬP</div>
+            </div>
+            <div id="form-reg" class="space-y-4">
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="ava-box selected" onclick="pickAva(this, 'avatar1.jpg')"><img src="avatar1.jpg" class="h-10 mx-auto"><p class="text-[8px] font-bold">Avatar mẫu 1</p></div>
+                    <div class="ava-box" onclick="pickAva(this, 'avatar2.jpg')"><img src="avatar2.jpg" class="h-10 mx-auto"><p class="text-[8px] font-bold">Avatar mẫu 2</p></div>
+                    <div class="ava-box flex flex-col justify-center border-2 border-dashed border-gray-400 overflow-hidden" style="height: 60px;" onclick="document.getElementById('uploadAva').click()">
+                        <div id="pre-view" class="w-full h-full flex items-center justify-center"><div class="text-[8px] font-bold uppercase">Ảnh riêng</div></div>
+                        <input type="file" id="uploadAva" class="hidden" accept="image/*" onchange="handleUpload(this)">
+                    </div>
+                </div>
+                <input type="text" id="reg-nick" class="w-full border-4 border-black p-2 rounded-xl text-center font-black uppercase" placeholder="TÊN TỰ CHỌN CỦA BẠN...">
+                <input type="password" id="reg-pass" class="w-full border-4 border-black p-2 rounded-xl text-center font-black" placeholder="MẬT KHẨU TỰ CHỌN...">
+                <button onclick="handleAuth('register')" class="btn-comic w-full text-xl uppercase italic">BẮT ĐẦU THỔI</button>
+            </div>
+            <div id="form-login" class="hidden space-y-4">
+                <input type="text" id="login-nick" class="w-full border-4 border-black p-3 rounded-xl text-center font-black uppercase" placeholder="TÊN CỪU ĐÃ THỔI THÀNH CÔNG LẦN 1">
+                <input type="password" id="login-pass" class="w-full border-4 border-black p-3 rounded-xl text-center font-black" placeholder="NHẬP MẬT KHẨU...">
+                <p class="font-bold italic text-sm text-gray-700">Quên tên và password, hãy liên hệ admin hệ thống!</p>
+                <button onclick="handleAuth('login')" class="btn-comic w-full text-xl uppercase italic">VÀO HÀNH TRÌNH</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LUẬT CHƠI -->
+    <div id="guide-modal" class="modal-overlay">
+        <div class="modal-content scale-90 opacity-0 transition-all duration-500">
+            <h2 class="text-2xl font-black text-blue-600 mb-4" style="font-family: 'Bangers'">🐑 LUẬT THỔI CHUỖI CÙNG NHAU</h2>
+            <div class="text-left space-y-3 text-sm font-bold text-gray-700 bg-blue-50 p-5 rounded-2xl border-2 border-black mb-6 italic leading-relaxed">
+                <p>• Mỗi ngày Cừu báo danh 1 lần → <b>+1 Streak cá nhân</b>.</p>
+                <p>• 30 cừu báo danh cùng ngày → <b>+1 Streak Nhóm</b>.</p>
+                <p>• Không báo danh 1 ngày → <b>Hành trình đóng băng</b>.</p>
+                <p>• Phá băng bằng cách bấm KHÔI PHỤC (Cộng 1 Streak bù, sau đó cần báo danh tiếp để + streak hôm đó).</p>
+                <p>• Hãy nhớ Tên và Mật khẩu để đăng nhập lần sau!</p>
+            </div>
+            <button onclick="enterMainGame()" class="btn-comic w-full text-2xl uppercase italic">ĐÃ HIỂU & VÀO GAME 🔥</button>
+        </div>
+    </div>
+
+    <!-- DANH SÁCH NGÀY -->
+    <div id="today-modal" class="modal-overlay" onclick="closeTodayList()">
+        <div class="modal-content max-w-lg" onclick="event.stopPropagation()"><h2 class="text-2xl font-black text-orange-600 mb-4" style="font-family: 'Bangers'">CỪU ĐÃ THỔI HÔM NAY</h2><div id="today-sheep-list" class="grid grid-cols-4 gap-3 max-h-[400px] overflow-y-auto p-2"></div><button onclick="closeTodayList()" class="btn-comic mt-6 mx-auto">ĐÓNG</button></div>
+    </div>
+
+    <!-- WIDGET CHUỖI NHÓM -->
+    <div id="group-widget" class="group-status hidden">
+        <div class="comic-border p-4 bg-orange-400 border-black shadow-[4px_4px_0px_#000]">
+            <p class="text-[10px] font-black uppercase text-white mb-1 text-center">Chuỗi Nhóm 🔥</p>
+            <div id="group-streak-val" class="text-4xl font-black text-white italic text-center mb-2" style="font-family: 'Bangers'">0 DAYS</div>
+            <div class="bg-white/30 p-2 rounded-xl border-2 border-black text-center cursor-pointer" onclick="openTodayList()">
+                <div class="w-full h-3 bg-gray-200 border border-black rounded-full overflow-hidden"><div id="group-bar" class="h-full bg-green-500 transition-all duration-700" style="width: 0%"></div></div>
+                <p class="text-[10px] font-black text-black mt-1 uppercase">Hôm nay: <span id="group-count-val">0/30</span> (Xem 🔍)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HUY CHƯƠNG POPUP -->
+    <div id="congrats-modal" class="modal-overlay">
+        <div class="modal-content text-center">
+            <h2 class="text-5xl mb-4 text-yellow-500" style="font-family: 'Bangers'">TUYỆT VỜI!</h2>
+            <div id="congrats-badge-icon" class="text-7xl mb-4">🥉</div>
+            <p id="congrats-text" class="text-xl font-black uppercase mb-6"></p>
+            <button onclick="document.getElementById('congrats-modal').style.display='none'" class="btn-comic w-full text-2xl">TIẾP TỤC</button>
+        </div>
+    </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbwmeV8r7_QNgXu1_a29IhmCPNp_E8FHoBNmUWFAhCUPEiX2YStXDdR-mWfY-nGLWd37JQ/exec"; 
-        let myNick = "", myAva = "avatar1.jpg";
+        const APP_URL = "https://script.google.com/macros/s/AKfycbzaweJEVbL_BVMVMCwquOkqn9rmK5a-FBkY8DXytylcoKrJ20LMHmTby_TOiAemtgFFAA/exec"; 
+        let myNick = "", myPass = "", myAva = "avatar1.jpg", allUsers = [];
         let milestonesAchieved = JSON.parse(localStorage.getItem('achievements') || '[]');
 
-        function pickAva(el, url) {
-            document.querySelectorAll('.ava-box').forEach(x => x.classList.remove('selected'));
-            el.classList.add('selected'); myAva = url;
+        function switchTab(type) {
+            document.getElementById('form-reg').classList.toggle('hidden', type === 'login');
+            document.getElementById('form-login').classList.toggle('hidden', type === 'reg');
+            document.getElementById('tab-reg').classList.toggle('active', type === 'reg');
+            document.getElementById('tab-login').classList.toggle('active', type === 'login');
         }
 
+        function pickAva(el, url) { document.querySelectorAll('.ava-box').forEach(x => x.classList.remove('selected')); el.classList.add('selected'); myAva = url; }
+        
         function handleUpload(input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    const img = new Image(); img.src = e.target.result;
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        const MAX_WIDTH = 150; canvas.width = MAX_WIDTH; canvas.height = img.height * (MAX_WIDTH / img.width);
-                        const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        const compressed = canvas.toDataURL('image/jpeg', 0.8);
-                        document.getElementById('pre-view').innerHTML = `<img src="${compressed}" class="w-full h-full object-cover rounded-lg">`;
-                        myAva = compressed;
-                        document.querySelectorAll('.ava-box').forEach(x => x.classList.remove('selected'));
-                        input.closest('.ava-box').classList.add('selected');
-                    };
+                    myAva = e.target.result;
+                    document.getElementById('pre-view').innerHTML = `<img src="${myAva}" class="w-full h-full object-cover rounded-lg">`;
+                    const parentBox = input.closest('.ava-box');
+                    document.querySelectorAll('.ava-box').forEach(x => x.classList.remove('selected'));
+                    parentBox.classList.add('selected');
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        function updateFileName(input) {
-            if (input.files[0]) document.getElementById('bill-text').innerText = "ĐÃ CHỌN: " + input.files[0].name;
+        async function handleAuth(type) {
+            myNick = document.getElementById(type === 'register' ? 'reg-nick' : 'login-nick').value.trim().toUpperCase();
+            myPass = document.getElementById(type === 'register' ? 'reg-pass' : 'login-pass').value.trim();
+            if(!myNick || !myPass) return alert("Vui lòng nhập Tên và Mật khẩu!");
+
+            const btn = document.querySelector(type === 'register' ? '#form-reg button' : '#form-login button');
+            const oldText = btn.innerText;
+            btn.innerText = "XỬ LÝ..."; btn.disabled = true;
+
+            try {
+                if(type === 'register') {
+                    const res = await fetch(APP_URL); const data = await res.json();
+                    if(data.users.find(u => u.nickname.toUpperCase() === myNick)) {
+                        alert("Tên này đã được đăng ký!"); btn.innerText = oldText; btn.disabled = false; return;
+                    }
+                    localStorage.setItem('sheep_nick', myNick); localStorage.setItem('sheep_pass', myPass);
+                    showGuide();
+                } else {
+                    const res = await fetch(APP_URL, { method: 'POST', body: JSON.stringify({ action: 'login', nickname: myNick, password: myPass }) });
+                    const result = await res.json();
+                    if(result.status === 'success') {
+                        myAva = result.avatar; localStorage.setItem('sheep_nick', myNick); localStorage.setItem('sheep_pass', myPass);
+                        showGuide();
+                    } else { alert(result.msg); btn.innerText = oldText; btn.disabled = false; }
+                }
+            } catch(e) { alert("Lỗi mạng!"); btn.innerText = oldText; btn.disabled = false; }
         }
 
-        function startGame() {
-            myNick = document.getElementById('nick').value.trim().toUpperCase();
-            if(!myNick) return alert("Vui lòng nhập tên Cừu Có Cánh!");
+        function showGuide() {
             document.getElementById('login-screen').classList.add('hidden');
+            const modal = document.getElementById('guide-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.querySelector('.modal-content').classList.remove('scale-90', 'opacity-0'); }, 10);
+        }
+
+        function enterMainGame() {
+            document.getElementById('guide-modal').style.display = 'none';
             document.getElementById('main-ui').classList.remove('hidden');
             document.getElementById('group-widget').classList.remove('hidden');
             document.getElementById('user-nick-header').innerText = myNick;
             document.getElementById('user-ava-header').src = myAva;
-            initMap(); sync(); setInterval(sync, 20000);
+            initMap(); sync(); setInterval(sync, 20000); initDraggable();
             document.getElementById('bgm').play().catch(() => {});
         }
 
+        window.onload = () => {
+            const sn = localStorage.getItem('sheep_nick'), sp = localStorage.getItem('sheep_pass');
+            if(sn && sp) { document.getElementById('login-nick').value = sn; document.getElementById('login-pass').value = sp; switchTab('login'); }
+        }
+
         function initMap() {
-            const map = document.getElementById('game-map');
-            const ms = [10, 20, 30, 40, 50, 60];
-            map.innerHTML = `<img id="player-pawn" src="${myAva}" alt="pawn">`;
+            const map = document.getElementById('game-map'); map.innerHTML = `<img id="player-pawn" src="${myAva}">`;
             for (let i = 1; i <= 60; i++) {
-                const tile = document.createElement('div');
-                tile.id = `tile-${i}`;
-                tile.className = "map-tile " + (ms.includes(i) ? "milestone" : "");
-                tile.innerText = i;
-                map.appendChild(tile);
+                const tile = document.createElement('div'); tile.id = `tile-${i}`;
+                tile.className = "map-tile " + ([10,20,30,40,50,60].includes(i) ? "milestone" : "");
+                tile.innerText = i; map.appendChild(tile);
             }
         }
 
         async function sync() {
             try {
-                const res = await fetch(APP_URL);
-                const data = await res.json();
-                
+                const res = await fetch(APP_URL); const data = await res.json(); allUsers = data.users;
                 document.getElementById('group-streak-val').innerText = `${data.groupStreak} DAYS`;
-                document.getElementById('group-count-val').innerText = `${data.activeToday}/30 Cừu`;
+                document.getElementById('group-count-val').innerText = `${data.activeToday}/30`;
                 document.getElementById('group-bar').style.width = Math.min((data.activeToday / 30) * 100, 100) + '%';
-                
                 const grid = document.getElementById('farm-grid'); grid.innerHTML = '';
                 data.users.sort((a,b) => b.streak - a.streak).forEach(u => {
                     grid.innerHTML += `<div class="sheep-card"><img src="${u.avatar}"><p class="name">${u.nickname}</p><p class="streak">${u.streak}D 🔥</p></div>`;
                 });
-
                 const me = data.users.find(u => u.nickname.toUpperCase() === myNick);
                 if(me) {
                     document.getElementById('user-streak').innerText = `${me.streak} DAYS 🔥`;
-                    myAva = me.avatar || myAva;
-                    document.getElementById('user-ava-header').src = myAva;
-                    document.getElementById('player-pawn').src = myAva;
-  // KIỂM TRA ĐỨT CHUỖI (Nếu isBroken là true từ server)
-            if(me.isBroken) {
-                document.getElementById('map-container').classList.add('broken-mode');
-                document.getElementById('action-box').classList.add('broken-mode');
-                document.getElementById('alert-broken').classList.remove('hidden'); // HIỆN NÚT KHÔI PHỤC
-            } else {
-                document.getElementById('map-container').classList.remove('broken-mode');
-                document.getElementById('action-box').classList.remove('broken-mode');
-                document.getElementById('alert-broken').classList.add('hidden'); // ẨN NÚT KHÔI PHỤC
+                    movePawn(me.streak); checkMilestones(me.streak);
+                    if (me.isBroken) {
+                        document.getElementById('alert-broken').classList.remove('hidden');
+                        document.getElementById('map-container').classList.add('broken-mode');
+                        document.getElementById('action-box').classList.add('broken-mode');
+                    } else {
+                        document.getElementById('alert-broken').classList.add('hidden');
+                        document.getElementById('map-container').classList.remove('broken-mode');
+                        document.getElementById('action-box').classList.remove('broken-mode');
                     }
                 }
-            } catch(e) { console.error("Lỗi đồng bộ!"); }
+            } catch(e) {}
         }
 
-        // KÉO THẢ CHUỖI NHÓM (DÙNG ĐƯỢC CẢ CHUỘT VÀ CẢM ỨNG)
-        const dragElement = document.getElementById("group-widget");
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        async function doAction(type) {
+            const amtId = type === 'submit' ? 'amt' : 'amt-broken';
+            const billId = type === 'submit' ? 'bill' : 'bill-broken';
+            const amt = document.getElementById(amtId).value;
+            const billFile = document.getElementById(billId).files[0];
+            
+            if(!amt || !billFile) return alert("Nhập đầy đủ tiền và bill!");
+            const btn = type === 'submit' ? document.getElementById('btnSubmit') : document.getElementById('btnRestore');
+            btn.disabled = true; btn.innerText = "XỬ LÝ...";
 
-        dragElement.onmousedown = dragMouseDown;
-        dragElement.ontouchstart = dragMouseDown;
-
-        function dragMouseDown(e) {
-            e = e || window.event;
-            const clientX = e.clientX || e.touches[0].clientX;
-            const clientY = e.clientY || e.touches[0].clientY;
-            pos3 = clientX; pos4 = clientY;
-            document.onmouseup = closeDragElement;
-            document.ontouchend = closeDragElement;
-            document.onmousemove = elementDrag;
-            document.ontouchmove = elementDrag;
-        }
-
-        function elementDrag(e) {
-            e = e || window.event;
-            const clientX = e.clientX || (e.touches ? e.touches[0].clientX : null);
-            const clientY = e.clientY || (e.touches ? e.touches[0].clientY : null);
-            if (!clientX) return;
-            pos1 = pos3 - clientX; pos2 = pos4 - clientY;
-            pos3 = clientX; pos4 = clientY;
-            dragElement.style.top = (dragElement.offsetTop - pos2) + "px";
-            dragElement.style.left = (dragElement.offsetLeft - pos1) + "px";
-            dragElement.style.bottom = "auto";
-        }
-
-        function closeDragElement() {
-            document.onmouseup = null; document.onmousemove = null;
-            document.ontouchend = null; document.ontouchmove = null;
+            let proof = await new Promise(r => { const f = new FileReader(); f.readAsDataURL(billFile); f.onload = () => r(f.result); });
+            try {
+                const res = await fetch(APP_URL, { method: 'POST', body: JSON.stringify({ action: type, nickname: myNick, password: myPass, amount: amt, proof: proof, avatar: myAva }) });
+                const result = await res.json();
+                if(result.status === 'success') { alert(type === 'submit' ? "Báo danh thành công!" : "Đã DNT bù! Hãy báo danh tiếp ngày hôm nay."); sync(); }
+            } catch(e) { alert("Lỗi mạng!"); }
+            btn.disabled = false; btn.innerText = type === 'submit' ? "Gửi báo danh 🔥" : "XÁC NHẬN BÙ & PHÁ BĂNG 🆘";
         }
 
         function movePawn(step) {
-            if (step <= 0) return;
             const target = document.getElementById(`tile-${Math.min(step, 60)}`), pawn = document.getElementById('player-pawn');
             if (!target || !pawn) return;
             const mapRect = document.getElementById('game-map').getBoundingClientRect(), rect = target.getBoundingClientRect();
             pawn.style.left = `${rect.left - mapRect.left + (rect.width/2) - 27}px`;
             pawn.style.top = `${rect.top - mapRect.top + (rect.height/2) - 27}px`;
-            for(let i=1; i<=60; i++) {
-                const t = document.getElementById(`tile-${i}`);
-                if(t) t.classList.toggle('active', i <= step);
-            }
+            for(let i=1; i<=60; i++) document.getElementById(`tile-${i}`).classList.toggle('active', i <= step);
         }
 
         function checkMilestones(streak) {
             const levels = { 10: "🥉", 20: "🥈", 30: "🥇", 40: "🎖️", 50: "🚀", 60: "👑" };
             Object.keys(levels).forEach(m => {
                 if(streak >= m) {
-                    const badge = document.getElementById(`b${m}`); if(badge) badge.classList.add('unlocked');
+                    document.getElementById(`b${m}`).classList.add('unlocked');
                     if(!milestonesAchieved.includes(m)) {
-                        showCongrats(levels[m], `Chúc mừng thuyền viên ${myNick}! <br> Bạn đạt chuỗi ${m}!`);
+                        confetti({ particleCount: 150, spread: 70 });
+                        document.getElementById('congrats-badge-icon').innerText = levels[m];
+                        document.getElementById('congrats-text').innerText = `BẠN ĐÃ ĐẠT CHUỖI ${m} NGÀY!`;
+                        document.getElementById('congrats-modal').style.display = 'flex';
+                        document.getElementById('sfx-win').play();
                         milestonesAchieved.push(m); localStorage.setItem('achievements', JSON.stringify(milestonesAchieved));
                     }
                 }
             });
         }
 
-        function showCongrats(icon, text) {
-            document.getElementById('congrats-badge-icon').innerText = icon;
-            document.getElementById('congrats-text').innerHTML = text;
-            document.getElementById('congrats-modal').style.display = 'flex';
-            document.getElementById('sfx-win').play();
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-            gsap.to(".congrats-content", { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" });
+        function initDraggable() {
+            const el = document.getElementById("group-widget");
+            let p1=0, p2=0, p3=0, p4=0;
+            el.onmousedown = start; el.ontouchstart = start;
+            function start(e) { p3 = e.clientX || e.touches[0].clientX; p4 = e.clientY || e.touches[0].clientY; document.onmouseup=end; document.ontouchend=end; document.onmousemove=move; document.ontouchmove=move; }
+            function move(e) {
+                const cx = e.clientX || (e.touches ? e.touches[0].clientX : 0); const cy = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+                p1 = p3 - cx; p2 = p4 - cy; p3 = cx; p4 = cy;
+                el.style.top = (el.offsetTop - p2) + "px"; el.style.left = (el.offsetLeft - p1) + "px"; el.style.bottom = "auto";
+            }
+            function end() { document.onmouseup=null; document.onmousemove=null; document.ontouchend=null; document.ontouchmove=null; }
         }
-        function closeCongrats() { gsap.to(".congrats-content", { scale: 0.5, opacity: 0, duration: 0.3, onComplete: () => { document.getElementById('congrats-modal').style.display = 'none'; }}); }
-
-        async function doAction(type) {
-            const amt = document.getElementById('amt').value, billFile = document.getElementById('bill').files[0];
-            if(type === 'submit' && (!amt || !billFile)) return alert("Vui lòng điền đủ tiền và bill!");
-            const btn = document.getElementById('btnSubmit'); btn.disabled = true; btn.innerText = "XỬ LÝ...";
-            if (type === 'submit') {
-                const reader = new FileReader(); reader.readAsDataURL(billFile);
-                reader.onload = function (event) {
-                    const img = new Image(); img.src = event.target.result;
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas'); const MAX_WIDTH = 500;
-                        canvas.width = MAX_WIDTH; canvas.height = img.height * (MAX_WIDTH / img.width);
-                        const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        sendToServer(canvas.toDataURL('image/jpeg', 0.7), amt, type, btn);
-                    }
-                };
-            } else { sendToServer("", 0, type, btn); }
+        function openTodayList() {
+            const listDiv = document.getElementById('today-sheep-list'); listDiv.innerHTML = '';
+            const today = new Date().toLocaleDateString('en-CA');
+            const todaySheep = allUsers.filter(u => u.lastUpdate && u.lastUpdate.split('T')[0] === today && u.isReportedToday);
+            if(!todaySheep.length) listDiv.innerHTML = '<p class="col-span-4 text-gray-400 italic py-4 text-center">Chưa có ai thổi hôm nay...</p>';
+            todaySheep.forEach(s => listDiv.innerHTML += `<div class="flex flex-col items-center"><img src="${s.avatar}" class="w-12 h-12 rounded-full border-2 border-black object-cover"><p class="text-[8px] font-bold uppercase mt-1 truncate w-full text-center">${s.nickname}</p></div>`);
+            document.getElementById('today-modal').style.display = 'flex';
         }
-
-        async function sendToServer(proof, amount, actionType, btn) {
-            try {
-                await fetch(APP_URL, { method: 'POST', body: JSON.stringify({ nickname: myNick, amount: amount, proof: proof, avatar: myAva, action: actionType }) });
-                alert("Thành công!"); sync();
-            } catch(e) { alert("Lỗi máy chủ!"); }
-            btn.disabled = false; btn.innerText = "GỬI BÁO DANH 🔥";
-        }
+        function closeTodayList() { document.getElementById('today-modal').style.display = 'none'; }
     </script>
 </body>
 </html>
