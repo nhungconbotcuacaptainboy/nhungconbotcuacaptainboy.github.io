@@ -59,12 +59,18 @@
         </div>
     </nav>
 
-    <div id="main-ui" class="hidden max-w-7xl mx-auto p-4 space-y-6">
+    <!-- ĐOẠN 2 NÚT BẤM (GIỮA NAV VÀ HEADER) -->
+    <div class="max-w-7xl mx-auto px-4 mt-6 flex justify-center gap-20">
+        <button onclick="document.getElementById('guide-modal').style.display='flex'; setTimeout(() => { document.querySelector('#guide-modal .modal-content').classList.remove('scale-90', 'opacity-0'); }, 10);" class="btn-comic !bg-white !text-red-600 !border-red-600 px-12 py-2 text-xl lowercase italic">luật</button>
+        <button onclick="document.getElementById('login-screen').classList.remove('hidden')" class="btn-comic !bg-white !text-red-600 !border-red-600 px-12 py-2 text-xl lowercase italic">đăng ký/ đăng nhập</button>
+    </div>
+
+    <div id="main-ui" class="max-w-7xl mx-auto p-4 space-y-6">
         <header class="flex flex-wrap justify-between items-center bg-white border-4 border-black p-4 rounded-3xl">
             <div class="flex items-center gap-4">
-                <img id="user-ava-header" src="" class="w-16 h-16 rounded-full border-4 border-black bg-white object-cover">
+                <img id="user-ava-header" src="avatar1.jpg" class="w-16 h-16 rounded-full border-4 border-black bg-white object-cover">
                 <div>
-                    <p id="user-nick-header" class="text-2xl font-black text-blue-600 uppercase italic"></p>
+                    <p id="user-nick-header" class="text-2xl font-black text-blue-600 uppercase italic">CHƯA ĐĂNG NHẬP</p>
                     <div class="flex gap-1 mt-1" id="badge-container">
                         <div class="badge-item" id="b10">🥉</div><div class="badge-item" id="b20">🥈</div><div class="badge-item" id="b30">🥇</div>
                         <div class="badge-item" id="b40">🎖️</div><div class="badge-item" id="b50">🚀</div><div class="badge-item" id="b60">👑</div>
@@ -86,7 +92,7 @@
                             <img src="qrcaptain.jpg" class="w-20 h-20 mx-auto">
                         </div>
                         <div class="space-y-2 text-left">
-                            <input type="number" id="amt-broken" placeholder="Số tiền bù..." class="w-full p-2 rounded-lg text-black font-bold text-sm">
+                            <input type="number" id="amt-broken" placeholder="Số tiền bù khôi phục chuỗi ..." class="w-full p-2 rounded-lg text-black font-bold text-sm">
                             <input type="file" id="bill-broken" class="hidden" onchange="document.getElementById('text-bill-broken').innerText='ĐÃ CHỌN BILL'">
                             <button onclick="document.getElementById('bill-broken').click()" class="w-full bg-slate-600 border border-dashed p-2 text-[10px] rounded-lg"><span id="text-bill-broken">TẢI BILL BÙ</span></button>
                             <button id="btnRestore" onclick="doAction('restore')" class="btn-comic w-full bg-blue-500 border-white text-sm">XÁC NHẬN BÙ & PHÁ BĂNG 🆘</button>
@@ -99,8 +105,8 @@
                 <div id="action-box" class="comic-border p-6 bg-yellow-50">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                         <div class="space-y-2">
-                            <label class="font-black text-[10px] uppercase">Số tiền DNT (> 0 đ):</label>
-                                                        <input type="number" id="amt" placeholder="Ví dụ: 11.603" class="w-full border-4 border-black p-3 rounded-xl font-bold bg-white">
+                            <label class="font-black text-[10px] uppercase">Số tiền DNT (> 0 đ): mỗi ngày chỉ tính báo danh 1 lần </label>
+                            <input type="number" id="amt" placeholder="Ví dụ: 11.603" class="w-full border-4 border-black p-3 rounded-xl font-bold bg-white">
                             <button type="button" onclick="document.getElementById('bill').click()" class="w-full border-2 border-dashed border-black p-2 rounded-xl font-black text-[10px] bg-white uppercase"><span id="bill-text">TẢI BILL MINH CHỨNG</span></button>
                             <input type="file" id="bill" class="hidden" onchange="document.getElementById('bill-text').innerText='ĐÃ CHỌN BILL'">
                         </div>
@@ -122,8 +128,9 @@
         </div>
     </div>
 
-    <!-- TAB ĐĂNG KÝ / ĐĂNG NHẬP -->
-    <div id="login-screen" class="fixed inset-0 z-[2000] bg-sky-500 flex items-center justify-center p-4">
+    <!-- TAB ĐĂNG KÝ / ĐĂNG NHẬP (ẨN MẶC ĐỊNH) -->
+    <div id="login-screen" class="fixed inset-0 z-[2000] bg-sky-500 flex items-center justify-center p-4 hidden">
+        <button onclick="document.getElementById('login-screen').classList.add('hidden')" class="absolute top-5 right-5 text-white text-5xl font-bold">×</button>
         <div class="comic-border p-8 max-w-md w-full text-center space-y-4">
             <h1 class="text-3xl text-blue-700" style="font-family: 'Bangers'">THỔI CHUỖI CÙNG NHAU</h1>
             <p class="font-bold italic text-sm text-gray-700">Chọn Avatar, tên và password duy nhất cho suốt hành trình!</p>
@@ -161,7 +168,7 @@
                 <p>• Mỗi ngày Cừu báo danh 1 lần → <b>+1 Streak cá nhân</b>.</p>
                 <p>• 30 cừu báo danh cùng ngày → <b>+1 Streak Nhóm</b>.</p>
                 <p>• Không báo danh 1 ngày → <b>Hành trình đóng băng</b>.</p>
-                <p>• Phá băng bằng cách bấm KHÔI PHỤC (Cộng 1 Streak bù, sau đó cần báo danh tiếp để + streak hôm đó).</p>
+                <p>• Phá băng bằng cách bấm KHÔI PHỤC BÙ (Cộng 1 Streak bù, sau đó cần báo danh tiếp để + streak hôm đó).</p>
                 <p>• Hãy nhớ Tên và Mật khẩu để đăng nhập lần sau!</p>
             </div>
             <button onclick="enterMainGame()" class="btn-comic w-full text-2xl uppercase italic">ĐÃ HIỂU & VÀO GAME 🔥</button>
@@ -260,21 +267,27 @@
 
         function enterMainGame() {
             document.getElementById('guide-modal').style.display = 'none';
-            document.getElementById('main-ui').classList.remove('hidden');
             document.getElementById('group-widget').classList.remove('hidden');
             document.getElementById('user-nick-header').innerText = myNick;
             document.getElementById('user-ava-header').src = myAva;
-            initMap(); sync(); setInterval(sync, 20000); initDraggable();
+            sync(); initDraggable();
             document.getElementById('bgm').play().catch(() => {});
         }
 
         window.onload = () => {
+            initMap();
             const sn = localStorage.getItem('sheep_nick'), sp = localStorage.getItem('sheep_pass');
-            if(sn && sp) { document.getElementById('login-nick').value = sn; document.getElementById('login-pass').value = sp; switchTab('login'); }
+            if(sn && sp) { 
+                document.getElementById('login-nick').value = sn; 
+                document.getElementById('login-pass').value = sp; 
+                myNick = sn; myPass = sp;
+                enterMainGame();
+            }
+            setInterval(sync, 20000);
         }
 
         function initMap() {
-            const map = document.getElementById('game-map'); map.innerHTML = `<img id="player-pawn" src="${myAva}">`;
+            const map = document.getElementById('game-map'); map.innerHTML = `<img id="player-pawn" src="avatar1.jpg">`;
             for (let i = 1; i <= 60; i++) {
                 const tile = document.createElement('div'); tile.id = `tile-${i}`;
                 tile.className = "map-tile " + ([10,20,30,40,50,60].includes(i) ? "milestone" : "");
@@ -292,8 +305,11 @@
                 data.users.sort((a,b) => b.streak - a.streak).forEach(u => {
                     grid.innerHTML += `<div class="sheep-card"><img src="${u.avatar}"><p class="name">${u.nickname}</p><p class="streak">${u.streak}D 🔥</p></div>`;
                 });
-                const me = data.users.find(u => u.nickname.toUpperCase() === myNick);
+                const me = data.users.find(u => u.nickname.toUpperCase() === (myNick || ""));
                 if(me) {
+                    document.getElementById('user-nick-header').innerText = me.nickname;
+                    document.getElementById('user-ava-header').src = me.avatar;
+                    document.getElementById('player-pawn').src = me.avatar;
                     document.getElementById('user-streak').innerText = `${me.streak} DAYS 🔥`;
                     movePawn(me.streak); checkMilestones(me.streak);
                     if (me.isBroken) {
@@ -314,16 +330,16 @@
             const billId = type === 'submit' ? 'bill' : 'bill-broken';
             const amt = document.getElementById(amtId).value;
             const billFile = document.getElementById(billId).files[0];
-            
+            if(!myNick) return alert("Vui lòng đăng nhập trước!");
             if(!amt || !billFile) return alert("Nhập đầy đủ tiền và bill!");
             const btn = type === 'submit' ? document.getElementById('btnSubmit') : document.getElementById('btnRestore');
             btn.disabled = true; btn.innerText = "XỬ LÝ...";
-
             let proof = await new Promise(r => { const f = new FileReader(); f.readAsDataURL(billFile); f.onload = () => r(f.result); });
             try {
                 const res = await fetch(APP_URL, { method: 'POST', body: JSON.stringify({ action: type, nickname: myNick, password: myPass, amount: amt, proof: proof, avatar: myAva }) });
                 const result = await res.json();
-                if(result.status === 'success') { alert(type === 'submit' ? "Báo danh thành công!" : "Đã DNT bù! Hãy báo danh tiếp ngày hôm nay."); sync(); }
+                if(result.status === 'success') { alert(type === 'submit' ? "Báo danh thành công!" : "Đã DNT bù, hãy báo danh hôm nay ở dưới nhé!"); sync(); }
+                else { alert(result.msg); }
             } catch(e) { alert("Lỗi mạng!"); }
             btn.disabled = false; btn.innerText = type === 'submit' ? "Gửi báo danh 🔥" : "XÁC NHẬN BÙ & PHÁ BĂNG 🆘";
         }
@@ -334,14 +350,18 @@
             const mapRect = document.getElementById('game-map').getBoundingClientRect(), rect = target.getBoundingClientRect();
             pawn.style.left = `${rect.left - mapRect.left + (rect.width/2) - 27}px`;
             pawn.style.top = `${rect.top - mapRect.top + (rect.height/2) - 27}px`;
-            for(let i=1; i<=60; i++) document.getElementById(`tile-${i}`).classList.toggle('active', i <= step);
+            for(let i=1; i<=60; i++) {
+                const t = document.getElementById(`tile-${i}`);
+                if(t) t.classList.toggle('active', i <= step);
+            }
         }
 
         function checkMilestones(streak) {
             const levels = { 10: "🥉", 20: "🥈", 30: "🥇", 40: "🎖️", 50: "🚀", 60: "👑" };
             Object.keys(levels).forEach(m => {
                 if(streak >= m) {
-                    document.getElementById(`b${m}`).classList.add('unlocked');
+                    const badge = document.getElementById(`b${m}`);
+                    if(badge) badge.classList.add('unlocked');
                     if(!milestonesAchieved.includes(m)) {
                         confetti({ particleCount: 150, spread: 70 });
                         document.getElementById('congrats-badge-icon').innerText = levels[m];
@@ -370,7 +390,7 @@
             const listDiv = document.getElementById('today-sheep-list'); listDiv.innerHTML = '';
             const today = new Date().toLocaleDateString('en-CA');
             const todaySheep = allUsers.filter(u => u.lastUpdate && u.lastUpdate.split('T')[0] === today && u.isReportedToday);
-            if(!todaySheep.length) listDiv.innerHTML = '<p class="col-span-4 text-gray-400 italic py-4 text-center">Chưa có ai thổi hôm nay...</p>';
+            if(!todaySheep.length) listDiv.innerHTML = '<p class="col-span-4 text-gray-400 italic py-4 text-center">Chưa có ai thổi chuỗi hôm nay...</p>';
             todaySheep.forEach(s => listDiv.innerHTML += `<div class="flex flex-col items-center"><img src="${s.avatar}" class="w-12 h-12 rounded-full border-2 border-black object-cover"><p class="text-[8px] font-bold uppercase mt-1 truncate w-full text-center">${s.nickname}</p></div>`);
             document.getElementById('today-modal').style.display = 'flex';
         }
