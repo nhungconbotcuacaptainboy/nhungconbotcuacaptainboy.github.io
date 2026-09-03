@@ -59,7 +59,6 @@
         </div>
     </nav>
 
-    <!-- ĐOẠN 2 NÚT BẤM (GIỮA NAV VÀ HEADER) -->
     <div class="max-w-7xl mx-auto px-4 mt-6 flex justify-center gap-20">
         <button onclick="document.getElementById('guide-modal').style.display='flex'; setTimeout(() => { document.querySelector('#guide-modal .modal-content').classList.remove('scale-90', 'opacity-0'); }, 10);" class="btn-comic !bg-white !text-red-600 !border-red-600 px-12 py-2 text-xl lowercase italic">luật</button>
         <button onclick="document.getElementById('login-screen').classList.remove('hidden')" class="btn-comic !bg-white !text-red-600 !border-red-600 px-12 py-2 text-xl lowercase italic">đăng ký/ đăng nhập</button>
@@ -82,7 +81,6 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-24">
             <div class="lg:col-span-8 space-y-6">
-                <!-- KHUNG ĐÓNG BĂNG -->
                 <div id="alert-broken" class="hidden comic-border bg-slate-800 text-white p-6 text-center space-y-4">
                     <h2 class="text-2xl font-black text-cyan-400" style="font-family: 'Bangers'">BẠN ĐÃ BỊ ĐÓNG BĂNG! ❄️</h2>
                     <p class="text-[11px] italic">Bạn đã bị đóng băng rồi! Hãy <b>DNT Bù</b> để phá băng và nhận lại Streak bù để được báo danh hôm nay nhé.</p>
@@ -128,7 +126,6 @@
         </div>
     </div>
 
-    <!-- TAB ĐĂNG KÝ / ĐĂNG NHẬP (ẨN MẶC ĐỊNH) -->
     <div id="login-screen" class="fixed inset-0 z-[2000] bg-sky-500 flex items-center justify-center p-4 hidden">
         <button onclick="document.getElementById('login-screen').classList.add('hidden')" class="absolute top-5 right-5 text-white text-5xl font-bold">×</button>
         <div class="comic-border p-8 max-w-md w-full text-center space-y-4">
@@ -154,13 +151,11 @@
             <div id="form-login" class="hidden space-y-4">
                 <input type="text" id="login-nick" class="w-full border-4 border-black p-3 rounded-xl text-center font-black uppercase" placeholder="TÊN CỪU ĐÃ THỔI DAY 1">
                 <input type="password" id="login-pass" class="w-full border-4 border-black p-3 rounded-xl text-center font-black" placeholder="NHẬP MẬT KHẨU...">
-                <p class="font-bold italic text-sm text-gray-700">Quên tên và password, hãy liên hệ admin hệ thống!</p>
                 <button onclick="handleAuth('login')" class="btn-comic w-full text-xl uppercase italic">VÀO HÀNH TRÌNH</button>
             </div>
         </div>
     </div>
 
-    <!-- LUẬT CHƠI -->
     <div id="guide-modal" class="modal-overlay">
         <div class="modal-content scale-90 opacity-0 transition-all duration-500">
             <h2 class="text-2xl font-black text-blue-600 mb-4" style="font-family: 'Bangers'">🐑 LUẬT THỔI CHUỖI CÙNG NHAU</h2>
@@ -175,32 +170,14 @@
         </div>
     </div>
 
-<!-- DANH SÁCH NGÀY (PHIÊN BẢN FIX NÚT ĐÓNG) -->
-<div id="today-modal" class="modal-overlay" style="z-index: 9999;">
-    <div class="modal-content max-w-lg flex flex-col" style="max-height: 85vh; position: relative; z-index: 10000;" onclick="event.stopPropagation()">
-        
-        <h2 class="text-2xl font-black text-orange-600 mb-4 shrink-0" style="font-family: 'Bangers'">
-            CỪU ĐÃ THỔI HÔM NAY
-        </h2>
-
-        <!-- Danh sách cừu -->
-        <div id="today-sheep-list" class="grid grid-cols-4 gap-4 overflow-y-auto p-4 bg-gray-100 rounded-2xl mb-4" style="flex-grow: 1; -webkit-overflow-scrolling: touch;">
-            <!-- Render cừu ở đây -->
+    <div id="today-modal" class="modal-overlay" style="z-index: 9999;">
+        <div class="modal-content max-w-lg flex flex-col" style="max-height: 85vh; position: relative; z-index: 10000;" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-black text-orange-600 mb-4 shrink-0" style="font-family: 'Bangers'">CỪU ĐÃ THỔI HÔM NAY</h2>
+            <div id="today-sheep-list" class="grid grid-cols-4 gap-4 overflow-y-auto p-4 bg-gray-100 rounded-2xl mb-4" style="flex-grow: 1; -webkit-overflow-scrolling: touch;"></div>
+            <div class="pt-2 shrink-0"><button type="button" onclick="closeTodayList()" class="btn-comic !bg-red-600 w-full text-2xl py-4">ĐÓNG</button></div>
         </div>
-
-        <!-- Nút đóng (Đã tách riêng và ép Z-index cao nhất) -->
-        <div class="pt-2 shrink-0">
-            <button type="button" 
-                    onclick="closeTodayList()" 
-                    class="btn-comic !bg-red-600 w-full text-2xl py-4" 
-                    style="position: relative; z-index: 10001; cursor: pointer !important;">
-                ĐÓNG
-            </button>
-        </div>
-        
     </div>
-</div>
-    <!-- WIDGET CHUỖI NHÓM -->
+
     <div id="group-widget" class="group-status hidden">
         <div class="comic-border p-4 bg-orange-400 border-black shadow-[4px_4px_0px_#000]">
             <p class="text-[10px] font-black uppercase text-white mb-1 text-center">Chuỗi Nhóm 🔥</p>
@@ -212,7 +189,6 @@
         </div>
     </div>
 
-    <!-- HUY CHƯƠNG POPUP -->
     <div id="congrats-modal" class="modal-overlay">
         <div class="modal-content text-center">
             <h2 class="text-5xl mb-4 text-yellow-500" style="font-family: 'Bangers'">TUYỆT VỜI!</h2>
@@ -223,7 +199,8 @@
     </div>
 
     <script>
-        const APP_URL = "https://script.google.com/macros/s/AKfycbwi0asSUjxI1_Eejgah5UGaHANIRNJV5gV_94OdQuIYXBsAIiQqSKgEAcNeODQjILQ3DQ/exec"; 
+        // THAY URL WEB APP MỚI CỦA BẠN VÀO ĐÂY
+        const APP_URL = "https://script.google.com/macros/s/AKfycbwHbDD9BEdcKX15SP_PjVqQgNau_eTs0fQyik1A_10CoLnnyPwcT-i9AQL8FgFLL3NIoQ/exec"; 
         let myNick = "", myPass = "", myAva = "avatar1.jpg", allUsers = [];
         let milestonesAchieved = JSON.parse(localStorage.getItem('achievements') || '[]');
 
@@ -234,7 +211,11 @@
             document.getElementById('tab-login').classList.toggle('active', type === 'login');
         }
 
-        function pickAva(el, url) { document.querySelectorAll('.ava-box').forEach(x => x.classList.remove('selected')); el.classList.add('selected'); myAva = url; }
+        function pickAva(el, url) { 
+            document.querySelectorAll('.ava-box').forEach(x => x.classList.remove('selected')); 
+            el.classList.add('selected'); 
+            myAva = url; 
+        }
         
         function handleUpload(input) {
             if (input.files && input.files[0]) {
@@ -251,8 +232,11 @@
         }
 
         async function handleAuth(type) {
-            myNick = document.getElementById(type === 'register' ? 'reg-nick' : 'login-nick').value.trim().toUpperCase();
-            myPass = document.getElementById(type === 'register' ? 'reg-pass' : 'login-pass').value.trim();
+            const nickInput = document.getElementById(type === 'register' ? 'reg-nick' : 'login-nick');
+            const passInput = document.getElementById(type === 'register' ? 'reg-pass' : 'login-pass');
+            myNick = nickInput.value.trim().toUpperCase();
+            myPass = passInput.value.trim();
+
             if(!myNick || !myPass) return alert("Vui lòng nhập Tên và Mật khẩu!");
 
             const btn = document.querySelector(type === 'register' ? '#form-reg button' : '#form-login button');
@@ -260,22 +244,21 @@
             btn.innerText = "XỬ LÝ..."; btn.disabled = true;
 
             try {
-                if(type === 'register') {
-                    const res = await fetch(APP_URL); const data = await res.json();
-                    if(data.users.find(u => u.nickname.toUpperCase() === myNick)) {
-                        alert("Tên này đã được đăng ký!"); btn.innerText = oldText; btn.disabled = false; return;
-                    }
+                const res = await fetch(APP_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify({ action: type, nickname: myNick, password: myPass, avatar: myAva }) 
+                });
+                const result = await res.json();
+
+                if(result.status === 'success') {
+                    if(type === 'login') myAva = result.avatar;
                     localStorage.setItem('sheep_nick', myNick); localStorage.setItem('sheep_pass', myPass);
+                    alert(result.msg || "Thành công!");
                     showGuide();
-                } else {
-                    const res = await fetch(APP_URL, { method: 'POST', body: JSON.stringify({ action: 'login', nickname: myNick, password: myPass }) });
-                    const result = await res.json();
-                    if(result.status === 'success') {
-                        myAva = result.avatar; localStorage.setItem('sheep_nick', myNick); localStorage.setItem('sheep_pass', myPass);
-                        showGuide();
-                    } else { alert(result.msg); btn.innerText = oldText; btn.disabled = false; }
+                } else { 
+                    alert(result.msg); btn.innerText = oldText; btn.disabled = false; 
                 }
-            } catch(e) { alert("Lỗi mạng!"); btn.innerText = oldText; btn.disabled = false; }
+            } catch(e) { alert("Lỗi kết nối Server!"); btn.innerText = oldText; btn.disabled = false; }
         }
 
         function showGuide() {
@@ -298,12 +281,10 @@
             initMap();
             const sn = localStorage.getItem('sheep_nick'), sp = localStorage.getItem('sheep_pass');
             if(sn && sp) { 
-                document.getElementById('login-nick').value = sn; 
-                document.getElementById('login-pass').value = sp; 
                 myNick = sn; myPass = sp;
                 enterMainGame();
             }
-            setInterval(sync, 20000);
+            setInterval(sync, 30000); // Tăng thời gian sync lên 30s để giảm tải
         }
 
         function initMap() {
@@ -317,50 +298,57 @@
 
         async function sync() {
             try {
-                const res = await fetch(APP_URL); const data = await res.json(); allUsers = data.users;
+                const res = await fetch(APP_URL); 
+                const data = await res.json(); 
+                allUsers = data.users;
                 document.getElementById('group-streak-val').innerText = `${data.groupStreak} DAYS`;
                 document.getElementById('group-count-val').innerText = `${data.activeToday}/30`;
                 document.getElementById('group-bar').style.width = Math.min((data.activeToday / 30) * 100, 100) + '%';
+                
                 const grid = document.getElementById('farm-grid'); grid.innerHTML = '';
-                data.users.sort((a,b) => b.streak - a.streak).forEach(u => {
+                [...data.users].sort((a,b) => b.streak - a.streak).forEach(u => {
                     grid.innerHTML += `<div class="sheep-card"><img src="${u.avatar}"><p class="name">${u.nickname}</p><p class="streak">${u.streak}D 🔥</p></div>`;
                 });
-                const me = data.users.find(u => u.nickname.toUpperCase() === (myNick || ""));
+
+                const me = data.users.find(u => u.nickname.toUpperCase() === myNick);
                 if(me) {
                     document.getElementById('user-nick-header').innerText = me.nickname;
                     document.getElementById('user-ava-header').src = me.avatar;
                     document.getElementById('player-pawn').src = me.avatar;
                     document.getElementById('user-streak').innerText = `${me.streak} DAYS 🔥`;
                     movePawn(me.streak); checkMilestones(me.streak);
-                    if (me.isBroken) {
-                        document.getElementById('alert-broken').classList.remove('hidden');
-                        document.getElementById('map-container').classList.add('broken-mode');
-                        document.getElementById('action-box').classList.add('broken-mode');
-                    } else {
-                        document.getElementById('alert-broken').classList.add('hidden');
-                        document.getElementById('map-container').classList.remove('broken-mode');
-                        document.getElementById('action-box').classList.remove('broken-mode');
-                    }
+                    document.getElementById('alert-broken').classList.toggle('hidden', !me.isBroken);
+                    document.getElementById('map-container').classList.toggle('broken-mode', me.isBroken);
+                    document.getElementById('action-box').classList.toggle('broken-mode', me.isBroken);
                 }
             } catch(e) {}
         }
 
         async function doAction(type) {
-            const amtId = type === 'submit' ? 'amt' : 'amt-broken';
-            const billId = type === 'submit' ? 'bill' : 'bill-broken';
-            const amt = document.getElementById(amtId).value;
-            const billFile = document.getElementById(billId).files[0];
-            if(!myNick) return alert("Vui lòng đăng nhập trước!");
-            if(!amt || !billFile) return alert("Nhập đầy đủ tiền và bill!");
-            const btn = type === 'submit' ? document.getElementById('btnSubmit') : document.getElementById('btnRestore');
-            btn.disabled = true; btn.innerText = "XỬ LÝ...";
-            let proof = await new Promise(r => { const f = new FileReader(); f.readAsDataURL(billFile); f.onload = () => r(f.result); });
+            const amtVal = document.getElementById(type === 'submit' ? 'amt' : 'amt-broken').value;
+            const billFile = document.getElementById(type === 'submit' ? 'bill' : 'bill-broken').files[0];
+            if(!myNick) return alert("Vui lòng đăng nhập!");
+            if(!amtVal || !billFile) return alert("Nhập đủ tiền và tải bill!");
+
+            const btn = document.getElementById(type === 'submit' ? 'btnSubmit' : 'btnRestore');
+            btn.disabled = true; btn.innerText = "ĐANG GỬI...";
+
+            let proof = await new Promise(r => { 
+                const f = new FileReader(); 
+                f.readAsDataURL(billFile); 
+                f.onload = () => r(f.result); 
+            });
+
             try {
-                const res = await fetch(APP_URL, { method: 'POST', body: JSON.stringify({ action: type, nickname: myNick, password: myPass, amount: amt, proof: proof, avatar: myAva }) });
+                const res = await fetch(APP_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify({ action: type, nickname: myNick, password: myPass, amount: amtVal, proof: proof }) 
+                });
                 const result = await res.json();
-                if(result.status === 'success') { alert(type === 'submit' ? "Báo danh thành công!" : "Đã DNT bù, hãy báo danh hôm nay ở dưới nhé!"); sync(); }
-                else { alert(result.msg); }
-            } catch(e) { alert("Lỗi mạng!"); }
+                if(result.status === 'success') {
+                    alert(result.msg); sync();
+                } else alert(result.msg);
+            } catch(e) { alert("Lỗi gửi dữ liệu!"); }
             btn.disabled = false; btn.innerText = type === 'submit' ? "Gửi báo danh 🔥" : "XÁC NHẬN BÙ & PHÁ BĂNG 🆘";
         }
 
@@ -379,16 +367,17 @@
         function checkMilestones(streak) {
             const levels = { 10: "🥉", 20: "🥈", 30: "🥇", 40: "🎖️", 50: "🚀", 60: "👑" };
             Object.keys(levels).forEach(m => {
-                if(streak >= m) {
+                const mNum = parseInt(m);
+                if(streak >= mNum) {
                     const badge = document.getElementById(`b${m}`);
                     if(badge) badge.classList.add('unlocked');
-                    if(!milestonesAchieved.includes(m)) {
+                    if(!milestonesAchieved.includes(mNum)) {
                         confetti({ particleCount: 150, spread: 70 });
                         document.getElementById('congrats-badge-icon').innerText = levels[m];
                         document.getElementById('congrats-text').innerText = `BẠN ĐÃ ĐẠT CHUỖI ${m} NGÀY!`;
                         document.getElementById('congrats-modal').style.display = 'flex';
                         document.getElementById('sfx-win').play();
-                        milestonesAchieved.push(m); localStorage.setItem('achievements', JSON.stringify(milestonesAchieved));
+                        milestonesAchieved.push(mNum); localStorage.setItem('achievements', JSON.stringify(milestonesAchieved));
                     }
                 }
             });
@@ -398,47 +387,39 @@
             const el = document.getElementById("group-widget");
             let p1=0, p2=0, p3=0, p4=0;
             el.onmousedown = start; el.ontouchstart = start;
-            function start(e) { p3 = e.clientX || e.touches[0].clientX; p4 = e.clientY || e.touches[0].clientY; document.onmouseup=end; document.ontouchend=end; document.onmousemove=move; document.ontouchmove=move; }
+            function start(e) { 
+                p3 = e.clientX || e.touches[0].clientX; 
+                p4 = e.clientY || e.touches[0].clientY; 
+                document.onmouseup=end; document.ontouchend=end; document.onmousemove=move; document.ontouchmove=move; 
+            }
             function move(e) {
-                const cx = e.clientX || (e.touches ? e.touches[0].clientX : 0); const cy = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+                const cx = e.clientX || (e.touches ? e.touches[0].clientX : 0); 
+                const cy = e.clientY || (e.touches ? e.touches[0].clientY : 0);
                 p1 = p3 - cx; p2 = p4 - cy; p3 = cx; p4 = cy;
                 el.style.top = (el.offsetTop - p2) + "px"; el.style.left = (el.offsetLeft - p1) + "px"; el.style.bottom = "auto";
             }
             function end() { document.onmouseup=null; document.onmousemove=null; document.ontouchend=null; document.ontouchmove=null; }
         }
-   function openTodayList() {
-    console.log("Đang mở danh sách...");
-    const listDiv = document.getElementById('today-sheep-list');
-    if(!listDiv) return;
-    
-    listDiv.innerHTML = '';
 
-    // Lọc những người đã báo danh (Dựa trên biến isReportedToday từ Backend)
-    const todaySheep = allUsers.filter(u => u.isReportedToday === true);
+        function openTodayList() {
+            const listDiv = document.getElementById('today-sheep-list');
+            listDiv.innerHTML = '';
+            const todaySheep = allUsers.filter(u => u.isReportedToday);
+            if (todaySheep.length === 0) {
+                listDiv.innerHTML = '<p class="col-span-4 text-gray-400 italic py-10 text-center w-full">Chưa có ai thổi chuỗi hôm nay...</p>';
+            } else {
+                todaySheep.forEach(s => {
+                    listDiv.innerHTML += `
+                        <div class="flex flex-col items-center bg-white p-2 rounded-xl border border-black/10">
+                            <img src="${s.avatar}" class="w-12 h-12 rounded-full border-2 border-black object-cover">
+                            <p class="text-[9px] font-black uppercase mt-2 truncate w-full text-center">${s.nickname}</p>
+                        </div>`;
+                });
+            }
+            document.getElementById('today-modal').style.display = 'flex';
+        }
 
-    if (todaySheep.length === 0) {
-        listDiv.innerHTML = '<p class="col-span-4 text-gray-400 italic py-10 text-center w-full">Chưa có ai thổi chuỗi hôm nay...</p>';
-    } else {
-        todaySheep.forEach(s => {
-            listDiv.innerHTML += `
-                <div class="flex flex-col items-center bg-white p-2 rounded-xl border border-black/10">
-                    <img src="${s.avatar || 'avatar1.jpg'}" class="w-12 h-12 rounded-full border-2 border-black object-cover">
-                    <p class="text-[9px] font-black uppercase mt-2 truncate w-full text-center">${s.nickname}</p>
-                </div>`;
-        });
-    }
-    
-    // Hiện modal bằng Flex
-    document.getElementById('today-modal').style.setProperty('display', 'flex', 'important');
-}
-
-function closeTodayList() {
-    console.log("Đang bấm nút ĐÓNG...");
-    const modal = document.getElementById('today-modal');
-    if(modal) {
-        modal.style.setProperty('display', 'none', 'important');
-    }
-}
+        function closeTodayList() { document.getElementById('today-modal').style.display = 'none'; }
     </script>
 </body>
 </html>
