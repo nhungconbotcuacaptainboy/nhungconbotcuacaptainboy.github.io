@@ -296,32 +296,44 @@
             }
         }
 
-        async function sync() {
+       async function sync() {
             try {
-                const res = await fetch(APP_URL); 
+                // Thêm timestamp để tránh cache trình duyệt
+                const res = await fetch(APP_URL + "?t=" + new Date().getTime()); 
                 const data = await res.json(); 
                 allUsers = data.users;
+                
+                // Cập nhật Chuỗi Nhóm
                 document.getElementById('group-streak-val').innerText = `${data.groupStreak} DAYS`;
                 document.getElementById('group-count-val').innerText = `${data.activeToday}/30`;
                 document.getElementById('group-bar').style.width = Math.min((data.activeToday / 30) * 100, 100) + '%';
                 
-                const grid = document.getElementById('farm-grid'); grid.innerHTML = '';
+                // Cập nhật Đồng Cừu
+                const grid = document.getElementById('farm-grid'); 
+                grid.innerHTML = '';
                 [...data.users].sort((a,b) => b.streak - a.streak).forEach(u => {
                     grid.innerHTML += `<div class="sheep-card"><img src="${u.avatar}"><p class="name">${u.nickname}</p><p class="streak">${u.streak}D 🔥</p></div>`;
                 });
 
-                const me = data.users.find(u => u.nickname.toUpperCase() === myNick);
+                // Cập nhật thông tin cá nhân của TÔI
+                const me = data.users.find(u => u.nickname.toUpperCase() === myNick.toUpperCase());
                 if(me) {
                     document.getElementById('user-nick-header').innerText = me.nickname;
                     document.getElementById('user-ava-header').src = me.avatar;
                     document.getElementById('player-pawn').src = me.avatar;
+                    // Sửa lỗi hiển thị: Đảm bảo lấy giá trị streak từ server
                     document.getElementById('user-streak').innerText = `${me.streak} DAYS 🔥`;
-                    movePawn(me.streak); checkMilestones(me.streak);
+                    
+                    movePawn(me.streak); 
+                    checkMilestones(me.streak);
+                    
                     document.getElementById('alert-broken').classList.toggle('hidden', !me.isBroken);
                     document.getElementById('map-container').classList.toggle('broken-mode', me.isBroken);
                     document.getElementById('action-box').classList.toggle('broken-mode', me.isBroken);
                 }
-            } catch(e) {}
+            } catch(e) {
+                console.log("Lỗi Sync: ", e);
+            }
         }
 
         async function doAction(type) {
